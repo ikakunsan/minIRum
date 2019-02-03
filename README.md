@@ -88,3 +88,9 @@ Access-Control-Allow-Origin: *
 * [Arduino core for ESP8266 WiFi chip](https://github.com/esp8266/Arduino) <= **2.3.0**
 * [aJson](https://github.com/interactive-matter/aJson) == v1.5
 * [IRremoteESP8266](https://github.com/markszabo/IRremoteESP8266) >= v2.5.0
+
+## 追加機能
+
+ステータスの表示用に、[OSRGHC3132A](http://akizukidenshi.com/catalog/g/gI-06313/)のような、カソードコモンの2色LEDを追加できます。（[拡散キャップ](http://akizukidenshi.com/catalog/g/gI-01126/)を付けると落ち着いた光り具合になります）
+上記のLEDの場合、緑のアノードを1kΩ経由で+5Vに、赤のアノードを4.7kΩ経由でGPIO 15に(各抵抗値はLEDの種類によります)、共通のカソードはGNDに接続します。
+LEDは、電源を入れると一旦オレンジになり、設定を終えてWiFiに接続し、通常動作に入ると緑に変わります。また、赤外線LEDが発光している間もオレンジに変わります。

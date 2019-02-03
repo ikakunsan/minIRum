@@ -53,6 +53,7 @@ void handleMessages() {
       aJsonObject* freq = aJson.getObjectItem(root, "freq");
       aJsonObject* data = aJson.getObjectItem(root, "data");
       if (freq != NULL && data != NULL) {
+        digitalWrite(SENDLED_PIN, HIGH);
         const uint16_t d_size = aJson.getArraySize(data);
         uint16_t rawData[d_size];
         for (int i = 0; i < d_size; i++) {
@@ -64,6 +65,7 @@ void handleMessages() {
         req = "";
         aJson.deleteItem(root);
         webServer.send(200, "text/plain", "ok");
+        digitalWrite(SENDLED_PIN, LOW);
       } else {
         webServer.send(400, "text/plain", "Invalid JSON format");
       }

@@ -11,6 +11,7 @@
 
 #define SEND_PIN 12
 #define RECV_PIN 14
+#define SENDLED_PIN 15
 #define TIMEOUT kMaxTimeoutMs
 #define CAPTURE_BUFFER_SIZE 1024
 
@@ -62,6 +63,8 @@ void startWebServer() {
 }
 
 void setup() {
+  pinMode(SENDLED_PIN, OUTPUT);
+  digitalWrite(SENDLED_PIN, HIGH);
   Serial.begin(115200);
   EEPROM.begin(512);
   delay(10);
@@ -77,6 +80,7 @@ void setup() {
       sprintf(buf, "%02x%02x%02x", mac[3], mac[4], mac[5]);
       strcat(localName, buf);
       startWebServer();
+      digitalWrite(SENDLED_PIN, LOW);
       return;
     }
   }
