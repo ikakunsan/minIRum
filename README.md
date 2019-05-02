@@ -1,7 +1,9 @@
-minIRum
+minIRum (+)
 ======
 
 A minimal implementation of infrared sender/receiver like IRKit by ESP8266
+
+(オリジナルのminIRumに、ステータスLEDを追加しました)
 
 ## Description
 
@@ -89,10 +91,11 @@ Access-Control-Allow-Origin: *
 * [aJson](https://github.com/interactive-matter/aJson) == v1.5
 * [IRremoteESP8266](https://github.com/markszabo/IRremoteESP8266) >= v2.5.0
 
-## 追加機能
+## 追加
+まず、すばらしいプロジェクトを公開してくださった9SQさんに感謝します。
 
 ステータスの表示用に、[OSRGHC3132A](http://akizukidenshi.com/catalog/g/gI-06313/)のような、カソードコモンの2色LEDを追加できます。（[拡散キャップ](http://akizukidenshi.com/catalog/g/gI-01126/)を付けると落ち着いた光り具合になります）
 上記のLEDの場合、緑のアノードを1kΩ経由で+5Vに、赤のアノードを4.7kΩ経由でGPIO 15に(各抵抗値はLEDの種類によります)、共通のカソードはGNDに接続します。
 LEDは、電源を入れると一旦オレンジになり、設定を終えてWiFiに接続し、通常動作に入ると緑に変わります。また、赤外線LEDが発光している間もオレンジに変わります。
 
-このインジケーターで、電源投入後、緑が点灯しない場合は電源が供給されていない、ずっと緑の場合はマイコンが正常に動いていない、オレンジから緑に切り替わらない場合はアクセスポイントに接続できていないか設定モードに入っているといった切り分けができるようになります。
+このインジケーターで、電源投入後、緑が点灯しない場合は電源が供給されていない、ずっと緑の場合はマイコンが正常に動いていない、オレンジから緑に切り替わらない場合はアクセスポイントに接続できていないか設定モードに入っている、といった切り分けができるようになります。
