@@ -3,7 +3,7 @@ minIRum (+)
 
 A minimal implementation of infrared sender/receiver like IRKit by ESP8266
 
-(オリジナルのminIRumに、ステータスLEDを追加しました)
+(オリジナルのminIRumに、ステータスLEDを追加しました。またaJsonを標準のものからikakunsan/aJson-modに変えることで、255個以上の長いデータ（エアコン等）に対応できるようになります)
 
 ## Description
 
@@ -88,7 +88,7 @@ Access-Control-Allow-Origin: *
 ## Requirements
 
 * [Arduino core for ESP8266 WiFi chip](https://github.com/esp8266/Arduino) <= **2.3.0**
-* [aJson](https://github.com/interactive-matter/aJson) == v1.5
+* [aJson](https://github.com/interactive-matter/aJson) == v1.5 ([aJson-mod](https://github.com/ikakunsan/aJson-mod)がオススメ)
 * [IRremoteESP8266](https://github.com/markszabo/IRremoteESP8266) >= v2.5.0
 
 ## 追加
@@ -99,3 +99,5 @@ Access-Control-Allow-Origin: *
 LEDは、電源を入れると一旦オレンジになり、設定を終えてWiFiに接続し、通常動作に入ると緑に変わります。また、赤外線LEDが発光している間もオレンジに変わります。
 
 このインジケーターで、電源投入後、緑が点灯しない場合は電源が供給されていない、ずっと緑の場合はマイコンが正常に動いていない、オレンジから緑に切り替わらない場合はアクセスポイントに接続できていないか設定モードに入っている、といった切り分けができるようになります。
+
+オリジナルのaJsonには、扱えるエレメントの最大値が255個までという制限があります。一般にエアコンのデータ長は長く、ものによってはこの制限のためにリモコンデータが正しく学習できない場合があります（うちのがそうでした(´・ω・`)）。aJsonにパッチを当ててこの制約を外したものを別途用意しましたので、オリジナルの代わりに使うとしあわせになれるかもしれません。
